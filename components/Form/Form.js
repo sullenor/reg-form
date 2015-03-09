@@ -6,8 +6,8 @@ import Input from 'react-components/components/Input/Input';
 import React from 'react';
 import Reflux from 'reflux';
 
+import regFormActions from '../../actions/regFormActions';
 import regFormStore from '../../stores/regFormStore';
-
 
 export default class Form extends React.Component {
     _onStoreChanged() {}
@@ -22,7 +22,7 @@ export default class Form extends React.Component {
         // this.state.errors
 
         var fields = (this.props.fields || []).map(field => {
-            return (<Input value={field.val} />);
+            return (<Input actionChanged={regFormActions.loginChanged} value={field.value} />);
         });
 
         return (
