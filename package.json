@@ -27,9 +27,10 @@
     "gulp-base64": "^0.1.2",
     "gulp-concat": "^2.5.2",
     "gulp-stylus": "^2.0.1",
-    "react": "^0.12.2",
+    "jsxhint": "^0.12.1",
+    "react": "^0.13.0-rc1",
     "react-components": "git://github.com/verkholantsev/react-components",
-    "vinyl-source-stream": "^1.1.0",
-    "jsxhint": "^0.12.1"
+    "reflux": "^0.2.6",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
