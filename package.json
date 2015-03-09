@@ -29,6 +29,7 @@
     "gulp-stylus": "^2.0.1",
     "react": "^0.12.2",
     "react-components": "git://github.com/verkholantsev/react-components",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "jsxhint": "^0.12.1"
   }
 }
