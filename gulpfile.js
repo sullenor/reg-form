@@ -31,8 +31,11 @@ gulp.task('css', function () {
 
 gulp.task('js', function () {
     browserify('./index.js')
-        .transform(babelify)
+        .transform({global: true}, babelify)
         .bundle()
+        .on('error', function (err) {
+            console.error(err.stack || err);
+        })
         .pipe(source('index.js'))
         .pipe(gulp.dest('build'));
 });
