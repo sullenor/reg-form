@@ -16,12 +16,14 @@ export default class Form extends React.Component {
                 return (<FormField
                     key={field.name}
                     actionChanged={field.action}
-                    error={errors[field.name]} />);
+                    label='login'
+                    error={errors[field.name]}
+                    name={field.name} />);
             }
         });
 
         return (
-            <form action="" method={this.props.method || 'POST'}>
+            <form action='' method={this.props.method || 'POST'}>
                 {fieldViews}
             </form>
         );
