@@ -18,10 +18,29 @@ export default Reflux.createStore({
         return fields;
     },
 
+    getErrors() {
+        return Object.keys(fields).reduce((result, fieldName) => {
+            let error = fields[fieldName].error;
+
+            if (error !== null && error !== undefined) {
+                result[fieldName] = fields[fieldName].error;
+            }
+
+            return result;
+        }, {});
+    },
+
     onLoginChanged(value) {
-        fields.login.value = value;
+        let login = fields.login;
+
+        login.value = value;
 
         // validation goes here
+        if (value === '') {
+            login.error = 'Required field';
+        } else {
+            login.error = null;
+        }
 
         this.trigger(fields);
     },
