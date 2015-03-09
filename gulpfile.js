@@ -12,18 +12,21 @@ var stylus = require('gulp-stylus');
 gulp.task('default', ['css', 'js']);
 
 gulp.task('css', function () {
-    gulp.src('./components/**/*.styl')
+    gulp.src([
+        '.node_modules/react-components/components/**/*.styl',
+        './components/**/*.styl'
+    ])
         .pipe(stylus({
             sourcemap: {
                 inline: true,
                 sourceRoot: '.',
-                basePath: './components'
+                basePath: '.'
             }
         }))
         .pipe(base64({debug: true}))
         .pipe(autoprefixer())
         .pipe(concat('index.css'))
-        .pipe(gulp.dest('./build/'));
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('js', function () {
