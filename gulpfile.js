@@ -13,7 +13,7 @@ gulp.task('default', ['css', 'js']);
 
 gulp.task('css', function () {
     gulp.src([
-        '.node_modules/react-components/components/**/*.styl',
+        './node_modules/react-components/components/**/*.styl',
         './components/**/*.styl'
     ])
         .pipe(stylus({
