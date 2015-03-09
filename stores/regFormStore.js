@@ -11,6 +11,34 @@ let fields = [
         return result;
     }, {});
 
+function getCities(country) {
+    switch (country) {
+    case 'ru':
+        return [
+            {
+                label: 'Moscow',
+                value: 'moscow'
+            },
+            {
+                label: 'Spb',
+                value: 'spb'
+            }
+        ];
+
+    case 'us':
+        return [
+            {
+                label: 'NY',
+                value: 'ny'
+            },
+            {
+                label: 'Washington',
+                value: 'wa'
+            }
+        ];
+    }
+}
+
 export default Reflux.createStore({
     listenables: [regFormActions],
 
@@ -30,6 +58,17 @@ export default Reflux.createStore({
         }, {});
     },
 
+    getOptions() {
+        return {
+            country: [
+                {label: 'Great Britain', value: 'gb'},
+                {label: 'Russia', value: 'ru'},
+                {label: 'USA', value: 'us'}
+            ],
+            city: getCities(fields.country.value)
+        };
+    },
+
     onLoginChanged(value) {
         let login = fields.login;
 
@@ -45,8 +84,8 @@ export default Reflux.createStore({
         this.trigger(fields);
     },
 
-    onEmailChanged(value) {
-        fields.email.value = value;
+    onCountryChanged(value) {
+        fields.country.value = value;
 
         // validation goes here
 
