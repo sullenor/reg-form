@@ -8,10 +8,15 @@ import regFormStore from '../../stores/regFormStore';
 
 export default class RegForm extends React.Component {
     _onStoreChanged() {
-        this.setState(regFormStore.getErrors());
+        this.setState({errors: regFormStore.getErrors()});
+    }
+    constructor() {
+        this.state = {
+            errors: regFormStore.getErrors()
+        };
     }
     componentDidMount() {
-        this._unsubscribe = regFormStore.listen(this._onStoreChanged);
+        this._unsubscribe = regFormStore.listen(this._onStoreChanged.bind(this));
     }
     componentWillUnmount() {
         this._unsubscribe();
