@@ -1,28 +1,18 @@
 'use strict';
 
-import {join} from 'path';
-
 import Input from 'react-components/components/Input/Input';
 import React from 'react';
 import Reflux from 'reflux';
 
-import regFormActions from '../../actions/regFormActions';
-import regFormStore from '../../stores/regFormStore';
-
 export default class Form extends React.Component {
-    _onStoreChanged() {}
-    componentDidMount() {
-        this._unsubscribe = regFormStore.listen(this._onStoreChanged);
-    }
-    componentWillUnmount() {
-        this._unsubscribe();
-    }
     render() {
-        // this.props.fields
-        // this.state.errors
+        var errors = this.props.errors || {};
 
         var fields = (this.props.fields || []).map(field => {
-            return (<Input actionChanged={regFormActions.loginChanged} value={field.value} />);
+            switch ((field.type || '').toLowerCase()) {
+            case 'input':
+                return (<Input key={field.name} error={errors[field.name]} />);
+            }
         });
 
         return (
