@@ -11,6 +11,7 @@ export default class Form extends React.Component {
         var fields = (this.props.fields || []).map(field => {
             switch ((field.type || '').toLowerCase()) {
             case 'input':
+                console.log(errors[field.name]);
                 return (<Input key={field.name} error={errors[field.name]} />);
             }
         });
