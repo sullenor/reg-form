@@ -1,5 +1,6 @@
 'use strict';
 
+import FormField from 'react-components/components/FormField/FormField';
 import Form from '../Form/Form';
 import React from 'react';
 
@@ -22,26 +23,21 @@ export default class RegForm extends React.Component {
         this._unsubscribe();
     }
     render() {
-        var fields = {
-            login: {
-                action: regFormActions.loginChanged,
-                name: 'login',
-                type: 'Input'
-            },
-            country: {
-                action: regFormActions.countryChanged,
-                name: 'country',
-                options: [
-                    {label: 'Greate Britain', value: 'gb'},
-                    {label: 'Russia', value: 'ru'},
-                    {label: 'USA', value: 'us'}
-                ],
-                type: 'Select'
-            }
-        };
+        let countries = [
+            {label: 'Great Britain', value: 'gb'},
+            {label: 'Russia', value: 'ru'},
+            {label: 'USA', value: 'us'}
+        ];
 
-        var errors = this.state.errors;
+        let errors = this.state.errors;
 
-        return (<Form fields={fields} errors={errors} />);
+        return (
+            <Form>
+                <FormField key='login' label='Login' name='login' error={errors.login}
+                    type='Input' actionChanged={regFormActions.loginChanged} />
+                <FormField key='country' label='Country' name='country' error={errors.country}
+                    type='Select' options={countries} actionChanged={regFormActions.countryChanged} />
+            </Form>
+        );
     }
 }
