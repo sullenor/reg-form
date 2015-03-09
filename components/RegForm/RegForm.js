@@ -26,7 +26,17 @@ export default class RegForm extends React.Component {
             login: {
                 action: regFormActions.loginChanged,
                 name: 'login',
-                type: 'input'
+                type: 'Input'
+            },
+            country: {
+                action: regFormActions.countryChanged,
+                name: 'country',
+                options: [
+                    {label: 'Greate Britain', value: 'gb'},
+                    {label: 'Russia', value: 'ru'},
+                    {label: 'USA', value: 'us'}
+                ],
+                type: 'Select'
             }
         };
 

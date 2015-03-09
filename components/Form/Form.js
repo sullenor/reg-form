@@ -10,16 +10,14 @@ export default class Form extends React.Component {
         let fields = this.props.fields;
         let fieldViews = Object.keys(fields || {}).map(fieldName => {
             let field = fields[fieldName];
-
-            switch ((field.type || '').toLowerCase()) {
-            case 'input':
-                return (<FormField
-                    key={field.name}
-                    actionChanged={field.action}
-                    label='login'
-                    error={errors[field.name]}
-                    name={field.name} />);
-            }
+            return (<FormField
+                key={field.name}
+                actionChanged={field.action}
+                label={field.name}
+                error={errors[field.name]}
+                name={field.name}
+                options={field.options}
+                type={field.type} />);
         });
 
         return (
