@@ -1,6 +1,6 @@
 'use strict';
 
-import Input from 'react-components/components/Input/Input';
+import FormField from 'react-components/components/FormField/FormField';
 import React from 'react';
 import Reflux from 'reflux';
 
@@ -13,16 +13,17 @@ export default class Form extends React.Component {
 
             switch ((field.type || '').toLowerCase()) {
             case 'input':
-                console.log(errors[field.name]);
-                return (<Input
+                return (<FormField
                     key={field.name}
                     actionChanged={field.action}
-                    error={errors[field.name]} />);
+                    label='login'
+                    error={errors[field.name]}
+                    name={field.name} />);
             }
         });
 
         return (
-            <form action="" method={this.props.method || 'POST'}>
+            <form action='' method={this.props.method || 'POST'}>
                 {fieldViews}
             </form>
         );
