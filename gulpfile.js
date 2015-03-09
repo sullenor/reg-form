@@ -4,8 +4,9 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var babelify = require('babelify');
 var base64 = require('gulp-base64');
-var browserify = require('gulp-browserify');
+var browserify = require('browserify');
 var concat = require('gulp-concat');
+var source = require('vinyl-source-stream');
 var stylus = require('gulp-stylus');
 
 gulp.task('default', ['css', 'js']);
@@ -29,10 +30,9 @@ gulp.task('css', function () {
 });
 
 gulp.task('js', function () {
-    gulp.src('./index.js')
-        .pipe(browserify({
-            debug: true,
-            transform: ['babelify']
-        }))
-        .pipe(gulp.dest('build'))
+    browserify('./index.js')
+        .transform(babelify)
+        .bundle()
+        .pipe(source('index.js'))
+        .pipe(gulp.dest('build'));
 });
