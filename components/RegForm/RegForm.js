@@ -37,7 +37,7 @@ export default class RegForm extends React.Component {
                     type='Input' actionChanged={regFormActions.loginChanged} />
                 <FormField key='country' label='Country' name='country' error={errors.country}
                     type='Select' options={countries} actionChanged={regFormActions.countryChanged} />
-                <FormField key='city' label='Country' name='city' error={errors.city}
+                <FormField key='city' label='City' name='city' error={errors.city}
                     type='Select' options={cities} actionChanged={regFormActions.cityChanged} />
             </Form>
         );
